@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBSBridge-Melon", "OBSBridge-Melon\OBSBridge-Melon.csproj", "{59887B51-F2E3-468C-90D4-3492BBD669A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBSBridge-BepInEx", "OBSBridge-BepInEx\OBSBridge-BepInEx.csproj", "{3CEACB0C-F9A1-4389-B915-80F9B74963DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59887B51-F2E3-468C-90D4-3492BBD669A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59887B51-F2E3-468C-90D4-3492BBD669A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59887B51-F2E3-468C-90D4-3492BBD669A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59887B51-F2E3-468C-90D4-3492BBD669A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CEACB0C-F9A1-4389-B915-80F9B74963DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CEACB0C-F9A1-4389-B915-80F9B74963DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CEACB0C-F9A1-4389-B915-80F9B74963DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CEACB0C-F9A1-4389-B915-80F9B74963DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <RootNamespace>WeatherElectric.OBSBridge</RootNamespace>
+        <LangVersion>default</LangVersion>
+        <IsPackable>true</IsPackable>
+        <Company>Weather Electric</Company>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <FileVersion>1.0.0.0</FileVersion>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <Product>OBSBridge</Product>
+        <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>OBSBridge (MelonLoader)</Title>
+        <Description>Bridge between Unity and OBS</Description>
+        <Copyright>Weather Electric</Copyright>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+        <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+        <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+        <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+        <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+        <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+        <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+        <DefineConstants>TRACE;MELONLOADER</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <DefineConstants>TRACE;MELONLOADER</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Remove="Links\**"/>
+        <Compile Remove="Staging\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Remove="Links\**"/>
+        <EmbeddedResource Remove="Staging\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Links\**"/>
+        <None Remove="Staging\**"/>
+        <None Remove="Refs\**"/>
+        <None Remove=".gitignore"/>
+        <None Remove="README.md"/>
+        <None Remove="setup.bat"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="obs-websocket-dotnet" Version="5.0.1" />
+
+        <PackageReference Include="LavaGang.MelonLoader" Version="0.7.0"/>
+    </ItemGroup>
+
+</Project>
