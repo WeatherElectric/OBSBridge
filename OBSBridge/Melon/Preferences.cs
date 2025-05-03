@@ -7,7 +7,7 @@ namespace WeatherElectric.OBSBridge.Melon;
 internal static class Preferences
 {
     public static readonly MelonPreferences_Category GlobalCategory = MelonPreferences.CreateCategory("Global");
-    public static readonly MelonPreferences_Category OwnCategory = MelonPreferences.CreateCategory("OBSControl");
+    public static readonly MelonPreferences_Category OwnCategory = MelonPreferences.CreateCategory("OBSBridge");
 
     public static MelonPreferences_Entry<int> LoggingMode { get; set; }
     public static MelonPreferences_Entry<string> WebsocketURL { get; set; }
@@ -24,6 +24,6 @@ internal static class Preferences
         WebsocketPassword = OwnCategory.CreateEntry("WebsocketPassword", "REPLACEME", "Websocket Password", "The password to use for the websocket connection. Change this to the password you set in OBS.");
         OwnCategory.SetFilePath(MelonEnvironment.UserDataDirectory + "/WeatherElectric.cfg");
         OwnCategory.SaveToFile(false);
-        ModConsole.Msg("Finished preferences setup for OBSControl", 1);
+        ModConsole.Msg("Finished preferences setup for OBSBridge", 1);
     }
 }

@@ -1,4 +1,4 @@
-﻿using WeatherElectric.OBSControl.OBS;
+﻿using WeatherElectric.OBSBridge.OBS;
 
 namespace WeatherElectric.OBSBridge;
 
@@ -9,7 +9,7 @@ public class Main : MelonMod
     internal const string Description = "Bridge between Unity and OBS";
     internal const string Author = "Mabel Amber";
     internal const string Company = "Weather Electric";
-    internal const string Version = "1.0.0";
+    internal const string Version = "2.0.0";
     internal const string DownloadLink = null;
 
     /// <inheritdoc />

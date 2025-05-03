@@ -7,7 +7,7 @@ using OBSWebsocketDotNet.Types.Events;
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 // ReSharper disable UnassignedField.Global
 
-namespace WeatherElectric.OBSControl.OBS;
+namespace WeatherElectric.OBSBridge.OBS;
 
 /// <summary>
 /// Allows for control over OBS through it's websocket server.
@@ -270,70 +270,6 @@ public static class ObsBridge
         return Obs.GetCurrentProgramScene();
     }
     
-    /// <summary>
-    /// (OBSOLETE) Check if OBS websocket is connected.
-    /// </summary>
-    /// <returns>True if connected, false if disconnected</returns>
-    [Obsolete("Use ObsBridge.Connected instead")]
-    public static bool IsConnected()
-    {
-        return Obs.IsConnected;
-    }
-
-    /// <summary>
-    /// (OBSOLETE) Get the recording status of OBS.
-    /// </summary>
-    /// <returns>True if recording, false if not recording</returns>
-    [Obsolete("Use ObsBridge.RecordActive instead")]
-    public static bool IsRecording()
-    {
-        var status = Obs.GetRecordStatus();
-        return status.IsRecording;
-    }
-
-    /// <summary>
-    /// (OBSOLETE) Gets the recording paused status of OBS.
-    /// </summary>
-    /// <returns>True if recording is paused, false if not paused</returns>
-    [Obsolete("Use ObsBridge.RecordPaused instead")]
-    public static bool IsRecordingPaused()
-    {
-        var status = Obs.GetRecordStatus();
-        return status.IsRecordingPaused;
-    }
-
-    /// <summary>
-    /// (OBSOLETE) Get the streaming status of OBS.
-    /// </summary>
-    /// <returns>True if stremaing, false if not streaming</returns>
-    [Obsolete("Use ObsBridge.StreamActive instead")]
-    public static bool IsStreaming()
-    {
-        var status = Obs.GetStreamStatus();
-        return status.IsActive;
-    }
-
-    /// <summary>
-    /// (OBSOLETE) Get the replay buffer status of OBS.
-    /// </summary>
-    /// <returns>True if active, false if inactive</returns>
-    [Obsolete("Use ObsBridge.ReplayBufferActive instead")]
-    public static bool IsReplayBufferActive()
-    {
-        return Obs.GetReplayBufferStatus();
-    }
-
-    /// <summary>
-    /// (OBSOLETE) Get the virtual cam status of OBS.
-    /// </summary>
-    /// <returns>True if active, false if inactive</returns>
-    [Obsolete("Use ObsBridge.VirtualCamActive instead")]
-    public static bool IsVirtualCamActive()
-    {
-        var status = Obs.GetVirtualCamStatus();
-        return status.IsActive;
-    }
-    
     #endregion
     
     #region Recording
@@ -420,6 +356,15 @@ public static class ObsBridge
         {
             ModConsole.Error($"Failed to stop recording. Error: {e.Message}");
         }
+    }
+    
+    /// <summary>
+    /// Gets the current recording directory in OBS.
+    /// </summary>
+    /// <returns>String path to directory</returns>
+    public static string GetRecordDirectory()
+    {
+        return Obs.GetRecordDirectory();
     }
     
     #endregion
