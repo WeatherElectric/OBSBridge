@@ -13,10 +13,13 @@
         <NeutralLanguage>en-US</NeutralLanguage>
         <Product>OBSBridge</Product>
         <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Title>OBSBridge (MelonLoader)</Title>
+        <Title>OBSBridge</Title>
         <Description>Bridge between Unity and OBS</Description>
         <Copyright>Weather Electric</Copyright>
+        <RepositoryUrl>https://github.com/WeatherElectric/OBSBridge</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseUrl>https://github.com/WeatherElectric/OBSBridge/blob/main/LICENSE.md</PackageLicenseUrl>
+        <Authors>Mabel Amber</Authors>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -32,10 +35,14 @@
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
         <DefineConstants>TRACE;MELONLOADER</DefineConstants>
+        <NoWarn>1701;1702;NU5125</NoWarn>
+        <DocumentationFile>bin\Debug\OBSBridge.xml</DocumentationFile>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
         <DefineConstants>TRACE;MELONLOADER</DefineConstants>
+        <NoWarn>1701;1702;NU5125</NoWarn>
+        <DocumentationFile>bin\Release\OBSBridge.xml</DocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -53,7 +60,6 @@
         <None Remove="Staging\**"/>
         <None Remove="Refs\**"/>
         <None Remove=".gitignore"/>
-        <None Remove="README.md"/>
         <None Remove="setup.bat"/>
     </ItemGroup>
 
@@ -62,5 +68,9 @@
 
         <PackageReference Include="LavaGang.MelonLoader" Version="0.7.0"/>
     </ItemGroup>
+
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+      <Exec Command="COPY $(TargetPath) $(ProjectDir)Staging\Mod\Mods&#xA;COPY $(TargetPath) $(ProjectDir)Staging\Nuget\lib\net6.0&#xA;&#xA;COPY $(SolutionDir)README.md $(ProjectDir)Staging\Nuget&#xA;COPY $(SolutionDir)README.md $(ProjectDir)Staging\Mod\Mods&#xA;COPY $(TargetDir)OBSBridge.xml $(ProjectDir)Staging\Nuget\lib\net6.0&#xA;COPY $(TargetDir)OBSBridge.xml $(ProjectDir)Staging\Mod\Mods" />
+    </Target>
 
 </Project>

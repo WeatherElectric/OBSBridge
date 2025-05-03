@@ -2,6 +2,7 @@
 
 namespace WeatherElectric.OBSBridge;
 
+/// <inheritdoc />
 public class Main : MelonMod
 {
     internal const string Name = "OBSBridge";
@@ -11,6 +12,7 @@ public class Main : MelonMod
     internal const string Version = "1.0.0";
     internal const string DownloadLink = null;
 
+    /// <inheritdoc />
     public override void OnInitializeMelon()
     {
         ModConsole.Setup(LoggerInstance);
@@ -20,6 +22,7 @@ public class Main : MelonMod
         ObsBridge.Connect();
     }
 
+    /// <inheritdoc />
     public override void OnApplicationQuit()
     {
         ObsBridge.Disconnect();

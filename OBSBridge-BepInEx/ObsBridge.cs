@@ -135,6 +135,7 @@ public static class ObsBridge
         {
             Plugin.Logger.LogError($"Failed to connect to OBS. Error: {e.Message}");
         }
+        Plugin.Logger.LogError("If you see this, it failed and I have NO idea why.");
     }
 
     internal static void Disconnect()

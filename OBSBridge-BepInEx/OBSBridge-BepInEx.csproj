@@ -21,13 +21,30 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <FileVersion>1.0.0.0</FileVersion>
         <NeutralLanguage>en-US</NeutralLanguage>
+        <Copyright>Weather Electric</Copyright>
+        <PackageLicenseUrl>https://github.com/WeatherElectric/OBSBridge/blob/main/LICENSE.md</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/WeatherElectric/OBSBridge</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <NoWarn>1701;1702;NU5125</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <NoWarn>1701;1702;NU5125</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all"/>
         <PackageReference Include="BepInEx.Core" Version="5.*"/>
         <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*"/>
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.4" />
+        <PackageReference Include="Microsoft.IO.RecyclableMemoryStream" Version="3.0.1" />
         <PackageReference Include="obs-websocket-dotnet" Version="5.0.1" />
+        <PackageReference Include="System.Reactive" Version="6.0.1" />
+        <PackageReference Include="System.Threading.Channels" Version="9.0.4" />
+        <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.6.3" />
         <PackageReference Include="UnityEngine.Modules" Version="2021.3.16" IncludeAssets="compile"/>
         <PackageReference Include="Websocket.Client" Version="5.1.2" />
     </ItemGroup>

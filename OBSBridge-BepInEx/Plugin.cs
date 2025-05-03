@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.IO;
+﻿using System.IO;
 using System.Reflection;
-using System.Threading.Tasks;
+using UnityEngine.SceneManagement;
 
 namespace WeatherElectric.OBSBridge;
 
-[BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
+[BepInPlugin(PluginInfo.PluginGuid, PluginInfo.PluginName, PluginInfo.PluginVersion)]
 public class Plugin : BaseUnityPlugin
 {
     internal new static ManualLogSource Logger;
@@ -15,39 +13,32 @@ public class Plugin : BaseUnityPlugin
     private void Awake()
     {
         Logger = base.Logger;
-        Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
+        Logger.LogInfo($"Plugin {PluginInfo.PluginGuid} is loaded!");
 
         Preferences = new Preferences(Config);
+        
+        LoadAssembly();
+        
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
-        LoadAssemblies(out var result);
-
-        if (!result) return;
+    private static void OnSceneLoaded(Scene arg0, LoadSceneMode loadSceneMode)
+    {
+        if (ObsBridge.Connected) return;
         ObsBridge.InitHooks();
         ObsBridge.Connect();
     }
 
-    private static void LoadAssemblies(out bool result)
+    private static void LoadAssembly()
     {
-        var obsAssemblyPath = Path.Combine(Paths.PluginPath, "obs-websocket-dotnet.dll");
-        var websocketAssemblyPath = Path.Combine(Paths.PluginPath, "Websocket.Client.dll");
+        var pathtoassembly = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        var depsPath = Path.Combine(pathtoassembly!, "deps");
 
-        result = true;
-        
-        try
+        var files = Directory.GetFiles(depsPath, "*.dll", SearchOption.AllDirectories);
+        foreach (var file in files)
         {
-            Assembly.LoadFrom(obsAssemblyPath);
-            Assembly.LoadFrom(websocketAssemblyPath);
-        }
-        catch (FileNotFoundException e)
-        {
-            Logger.LogError($"Failed to load assemblies: {e.Message}");
-            result = false;
-            
-        }
-        catch (Exception e)
-        {
-            Logger.LogError($"Failed to load assemblies: {e.Message}");
-            result = false;
+            var assembly = Assembly.LoadFrom(file);
+            Logger.LogInfo($"Loaded assembly: {assembly.FullName}");
         }
     }
 }

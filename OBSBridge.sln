@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBSBridge-Melon", "OBSBridge-Melon\OBSBridge-Melon.csproj", "{59887B51-F2E3-468C-90D4-3492BBD669A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBSBridge", "OBSBridge\OBSBridge.csproj", "{59887B51-F2E3-468C-90D4-3492BBD669A6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBSBridge-BepInEx", "OBSBridge-BepInEx\OBSBridge-BepInEx.csproj", "{3CEACB0C-F9A1-4389-B915-80F9B74963DA}"
 EndProject

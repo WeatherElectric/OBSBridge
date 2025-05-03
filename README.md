@@ -1,5 +1,5 @@
 # OBSBridge
-Allows interaction with OBS via Websocket
+Allows interaction with OBS within Unity games.
 
 ## MelonLoader
 | Release | IL2CPP | Mono |
@@ -11,9 +11,12 @@ Allows interaction with OBS via Websocket
 ## BepInEx
 | Release | IL2CPP | Mono |
 |---------|----|---|
-| BIE 5.X | ✖️ | ✅ |
+| BIE 5.X | ✖️ | ✖️ |
 | BIE 6.X | ✖️ | ✖️ |
 
-## Nuget
+I had plans to support BIE 5.X, but BepInEx refuses to properly load any assemblies that aren't BepInEx plugins.
+I really don't feel like rewriting obs-websocket-sharp and it's 6 dependencies to be BepInEx plugins.
 
-// todo
+Maybe later, but for now I'm sticking to an actually good modloader.
+
+## [Documentation](https://github.com/WeatherElectric/OBSBridge/wiki)
